@@ -14,7 +14,7 @@ def handle_client(client_socket):
     try:
         ticket_id = client_socket.recv(1024).decode()
         logging.info(f"Received Ticket ID: {ticket_id}")
-        
+
         if validate_ticket(ticket_id):
             client_socket.send("VALID".encode())
             mark_ticket_as_used(ticket_id)  # Mark ticket as used

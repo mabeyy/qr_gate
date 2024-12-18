@@ -1,7 +1,18 @@
 import qrcode
 import os
 import sqlite3
-from qr_utils import generate_qr
+
+def generate_qr(ticket_id, save_dir="qr"):
+    import os
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    qr = qrcode.QRCode(version=2, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
+    qr.add_data(ticket_id)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+    img_path = os.path.join(save_dir, f"{ticket_id}.png")
+    img.save(img_path)
+    return img_path
 
 def add_ticket_to_db_with_path(ticket_id, id_type, qr_path, status="unused"):
     conn = sqlite3.connect('tickets.db')
