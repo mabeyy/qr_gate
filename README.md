@@ -1,0 +1,1 @@
+# qr_validation_system
