@@ -1,0 +1,9 @@
+{
+    "server": {
+        "host": "localhost",
+        "port": 12346
+    },
+    "database": {
+        "path": "tickets.db"
+    }
+}
