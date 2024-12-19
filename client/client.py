@@ -1,6 +1,7 @@
+import sys
+import os
 import tkinter as tk
 from tkinter import messagebox
-from qr_utils import decode_qr_from_camera
 import socket
 import threading
 import json
@@ -8,8 +9,13 @@ import cv2
 import time
 import logging
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from qr.qr_utils import decode_qr_from_camera
+
+config_path = os.path.join(os.path.dirname(__file__), '../config.json')
+
 # Load configuration
-with open("config.json") as config_file:
+with open(config_path) as config_file:
     config = json.load(config_file)
 
 # Setup logging

@@ -4,6 +4,6 @@
         "port": 12340
     },
     "database": {
-        "path": "tickets.db"
+        "path": "database/tickets.db"
     }
 }

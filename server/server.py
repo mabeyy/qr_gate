@@ -1,11 +1,17 @@
+import sys
+import os
 import socket
 import threading
-from database import setup_database, validate_ticket, mark_ticket_as_used
 import logging
 import json
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from database.database import setup_database, validate_ticket, mark_ticket_as_used
+
+config_path = os.path.join(os.path.dirname(__file__), '../config.json')
+
 # Load configuration
-with open("config.json") as config_file:
+with open(config_path) as config_file:
     config = json.load(config_file)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
