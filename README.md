@@ -1,1 +1,1 @@
-# qr_validation_system
+# QR Gate
